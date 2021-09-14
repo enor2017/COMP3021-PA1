@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="StudentTest" tests="1" skipped="1" failures="0" errors="0" timestamp="2021-09-13T13:47:41" hostname="dogs-mba.local" time="0.04">
+  <properties/>
+  <testcase name="Complicated Movement - No Extra Life" classname="StudentTest" time="0.04">
+    <skipped/>
+  </testcase>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

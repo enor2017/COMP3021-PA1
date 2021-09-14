@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="9.0">
+<file name="/Users/dog/Desktop/COMP3021-Fall2021/PA1/app/src/main/java/hk/ust/cse/comp3021/pa1/InertiaTextGame.java">
+</file>
+<file name="/Users/dog/Desktop/COMP3021-Fall2021/PA1/app/src/main/java/hk/ust/cse/comp3021/pa1/Main.java">
+</file>
+<file name="/Users/dog/Desktop/COMP3021-Fall2021/PA1/app/src/main/java/hk/ust/cse/comp3021/pa1/controller/GameBoardController.java">
+</file>
+<file name="/Users/dog/Desktop/COMP3021-Fall2021/PA1/app/src/main/java/hk/ust/cse/comp3021/pa1/controller/GameController.java">
+</file>
+<file name="/Users/dog/Desktop/COMP3021-Fall2021/PA1/app/src/main/java/hk/ust/cse/comp3021/pa1/model/BoardElement.java">
+</file>
+<file name="/Users/dog/Desktop/COMP3021-Fall2021/PA1/app/src/main/java/hk/ust/cse/comp3021/pa1/model/Cell.java">
+</file>
+<file name="/Users/dog/Desktop/COMP3021-Fall2021/PA1/app/src/main/java/hk/ust/cse/comp3021/pa1/model/Direction.java">
+</file>
+<file name="/Users/dog/Desktop/COMP3021-Fall2021/PA1/app/src/main/java/hk/ust/cse/comp3021/pa1/model/Entity.java">
+</file>
+<file name="/Users/dog/Desktop/COMP3021-Fall2021/PA1/app/src/main/java/hk/ust/cse/comp3021/pa1/model/EntityCell.java">
+</file>
+<file name="/Users/dog/Desktop/COMP3021-Fall2021/PA1/app/src/main/java/hk/ust/cse/comp3021/pa1/model/ExtraLife.java">
+</file>
+<file name="/Users/dog/Desktop/COMP3021-Fall2021/PA1/app/src/main/java/hk/ust/cse/comp3021/pa1/model/GameBoard.java">
+</file>
+<file name="/Users/dog/Desktop/COMP3021-Fall2021/PA1/app/src/main/java/hk/ust/cse/comp3021/pa1/model/GameState.java">
+</file>
+<file name="/Users/dog/Desktop/COMP3021-Fall2021/PA1/app/src/main/java/hk/ust/cse/comp3021/pa1/model/Gem.java">
+</file>
+<file name="/Users/dog/Desktop/COMP3021-Fall2021/PA1/app/src/main/java/hk/ust/cse/comp3021/pa1/model/Mine.java">
+</file>
+<file name="/Users/dog/Desktop/COMP3021-Fall2021/PA1/app/src/main/java/hk/ust/cse/comp3021/pa1/model/MoveResult.java">
+</file>
+<file name="/Users/dog/Desktop/COMP3021-Fall2021/PA1/app/src/main/java/hk/ust/cse/comp3021/pa1/model/MoveStack.java">
+</file>
+<file name="/Users/dog/Desktop/COMP3021-Fall2021/PA1/app/src/main/java/hk/ust/cse/comp3021/pa1/model/Player.java">
+</file>
+<file name="/Users/dog/Desktop/COMP3021-Fall2021/PA1/app/src/main/java/hk/ust/cse/comp3021/pa1/model/Position.java">
+</file>
+<file name="/Users/dog/Desktop/COMP3021-Fall2021/PA1/app/src/main/java/hk/ust/cse/comp3021/pa1/model/PositionOffset.java">
+</file>
+<file name="/Users/dog/Desktop/COMP3021-Fall2021/PA1/app/src/main/java/hk/ust/cse/comp3021/pa1/model/StopCell.java">
+</file>
+<file name="/Users/dog/Desktop/COMP3021-Fall2021/PA1/app/src/main/java/hk/ust/cse/comp3021/pa1/model/Wall.java">
+</file>
+<file name="/Users/dog/Desktop/COMP3021-Fall2021/PA1/app/src/main/java/hk/ust/cse/comp3021/pa1/util/GameStateSerializer.java">
+</file>
+<file name="/Users/dog/Desktop/COMP3021-Fall2021/PA1/app/src/main/java/hk/ust/cse/comp3021/pa1/view/GameBoardView.java">
+</file>
+<file name="/Users/dog/Desktop/COMP3021-Fall2021/PA1/app/src/main/java/hk/ust/cse/comp3021/pa1/view/GameView.java">
+</file>
+</checkstyle>
