@@ -1,5 +1,3 @@
-## [Note] This code was copied from my [original repo](https://github.com/enor2017/COMP3021-Fall2021) on Sep 14, where previous commits can be found. 
-
 # COMP3021 PA1: Inertia ASCII Game
 
 Inertia is a puzzle game, originally implemented by Ben Olmstead. The objective of this game is to collect all gems 

@@ -293,14 +293,6 @@ public final class GameBoard {
         return player;
     }
 
-    @NotNull
-    private Position getPlayerPos() {
-        if (player.getOwner() == null) {
-            throw new IllegalCallerException("How come? player has no owner??");
-        }
-        return player.getOwner().getPosition();
-    }
-
     /**
      * Re-calculate the num of gems on the board.
      * @return The number of gems still present in the game board.
