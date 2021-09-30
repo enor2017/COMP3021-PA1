@@ -883,7 +883,146 @@ public class StudentTest {
 
     }
 
-    @AfterEach
+    @Test
+    @Tag("student")
+    @DisplayName("Test Position::offsetBy")
+    void testPositionOffsetBy() {
+        final Position pos = new Position(1, 1);
+
+        // test offsetBy(int, int)
+        assertThrows(IllegalArgumentException.class, () -> pos.offsetBy(-2, -1));
+        assertThrows(IllegalArgumentException.class, () -> pos.offsetBy(-1, -2));
+        pos.offsetBy(-1, -1);
+        pos.offsetBy(100, 200);
+
+        // test offsetBy(PositionOffset)
+        final Position newPos = new Position(1, 1);
+        var offset1 = new PositionOffset(-1, -2);
+        var offset2 = new PositionOffset(-2, -1);
+        var offset3 = new PositionOffset(-1, -1);
+        assertThrows(IllegalArgumentException.class, () -> newPos.offsetBy(offset1));
+        assertThrows(IllegalArgumentException.class, () -> newPos.offsetBy(offset2));
+        newPos.offsetBy(offset3);
+
+        // test offsetByOrNull(int, int, int, int)
+        Position p = new Position(1, 1);
+        assertNull(p.offsetByOrNull(4, 4, 5, 5));
+        assertNull(p.offsetByOrNull(-1, -2, 5, 5));
+
+        var res = p.offsetByOrNull(2, -1, 4, 2);
+        assertNotNull(res);
+        assertEquals(3, res.row());
+        assertEquals(0, res.col());
+    }
+
+
+    //   0123
+    // 0 **PW
+    // 1 *.W.
+    @Test
+    @Tag("student")
+    @DisplayName("Undo after collecting gems")
+    void testUndoCollectingGems() {
+        gameBoard = GameBoardUtils.createGameBoard(2, 4, (pos) -> {
+            if (pos.equals(new Position(0, 3)) || pos.equals(new Position(1, 2))) {
+                return new Wall(pos);
+            } else if (pos.row() + pos.col() <= 1) {
+                return new EntityCell(pos, new Gem());
+            } else if (pos.equals(new Position(0, 2))) {
+                return new StopCell(pos, new Player());
+            } else {
+                return new EntityCell(pos);
+            }
+        });
+        gameState = new GameState(gameBoard);
+        controller = new GameController(gameState);
+
+        assertEquals(3, gameState.getNumGems());
+        assertFalse(gameState.hasWon());
+        assertFalse(gameState.hasLost());
+        var score = gameState.getScore();
+
+        // collect two gems
+        controller.processMove(Direction.LEFT);
+        assertEquals(1, gameState.getNumGems());
+        assertFalse(gameState.hasWon());
+        assertFalse(gameState.hasLost());
+        score += (20 - 1);
+        assertEquals(score, gameState.getScore());
+
+        // undo
+        controller.processUndo();
+        assertEquals(3, gameState.getNumGems());
+        score -= (20 + 2);
+        assertEquals(score, gameState.getScore());
+
+        // collect two gems
+        var move = controller.processMove(Direction.LEFT);
+        assertTrue(move instanceof MoveResult.Valid.Alive);
+        assertEquals(1, gameState.getNumGems());
+        score += (20 - 1);
+        assertEquals(score, gameState.getScore());
+        assertFalse(gameState.hasWon());
+        assertFalse(gameState.hasLost());
+
+
+        // undo
+        controller.processUndo();
+        assertEquals(3, gameState.getNumGems());
+        score -= (20 + 2);
+        assertEquals(score, gameState.getScore());
+
+        // collect two gems
+        move = controller.processMove(Direction.LEFT);
+        assertTrue(move instanceof MoveResult.Valid.Alive);
+        assertEquals(1, gameState.getNumGems());
+        score += (20 - 1);
+        assertEquals(score, gameState.getScore());
+        assertFalse(gameState.hasWon());
+        assertFalse(gameState.hasLost());
+
+        // collect last gem
+        move = controller.processMove(Direction.DOWN);
+        assertTrue(move instanceof MoveResult.Valid.Alive);
+        assertEquals(0, gameState.getNumGems());
+        score += (10 - 1);
+        assertEquals(score, gameState.getScore());
+        assertTrue(gameState.hasWon());
+        assertFalse(gameState.hasLost());
+
+        // undo last gem (don't know if this is legal... But should work?)
+        controller.processUndo();
+        assertEquals(1, gameState.getNumGems());
+        score -= (10 + 2);
+        assertEquals(score, gameState.getScore());
+
+        // undo collecting two gems
+        controller.processUndo();
+        assertEquals(3, gameState.getNumGems());
+        score -= (20 + 2);
+        assertEquals(score, gameState.getScore());
+
+        // redo collect two gems
+        move = controller.processMove(Direction.LEFT);
+        assertTrue(move instanceof MoveResult.Valid.Alive);
+        assertEquals(1, gameState.getNumGems());
+        score += (20 - 1);
+        assertEquals(score, gameState.getScore());
+        assertFalse(gameState.hasWon());
+        assertFalse(gameState.hasLost());
+
+        // redo collect last gem
+        move = controller.processMove(Direction.DOWN);
+        assertTrue(move instanceof MoveResult.Valid.Alive);
+        assertEquals(0, gameState.getNumGems());
+        score += (10 - 1);
+        assertEquals(score, gameState.getScore());
+        assertTrue(gameState.hasWon());
+        assertFalse(gameState.hasLost());
+    }
+
+
+        @AfterEach
     void tearDown() {
         controller = null;
         gameState = null;
